@@ -1,15 +1,30 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Heart Animation</title>
+    <title>Love Animation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+ 
+    <div class="landing-page">
+        <div class="heart-graphic"></div>
+        <div class="input-container">
+            <input type="text" id="yourName" placeholder="Your name">
+            <input type="text" id="yourLoveName" placeholder="Your love name">
+            <button id="makeIt">Make it</button>
+        </div>
+    </div>
+
+    <div class="animation-page hidden">
+        <div class="center-text">
+            <span id="nameDisplay"></span>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
