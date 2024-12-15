@@ -1,25 +1,49 @@
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
 
-    const span = document.createElement('span');
-    span.textContent = 'I Love You';
-    span.style.transform = "rotate(-45deg)"; // Align text within the rotated heart
-    heart.appendChild(span);
+const makeItButton = document.getElementById('makeIt');
+const landingPage = document.querySelector('.landing-page');
+const animationPage = document.querySelector('.animation-page');
+const yourNameInput = document.getElementById('yourName');
+const yourLoveNameInput = document.getElementById('yourLoveName');
+const nameDisplay = document.getElementById('nameDisplay');
 
-    // Randomize position and size
-    const size = Math.random() * 30 + 30 + "px";
-    heart.style.width = size;
-    heart.style.height = size;
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "100vh";
+makeItButton.addEventListener('click', () => {
+    const yourName = yourNameInput.value.trim();
+    const yourLoveName = yourLoveNameInput.value.trim();
 
-    document.body.appendChild(heart);
+    if (!yourName || !yourLoveName) {
+        alert("Please fill in both fields!");
+        return;
+    }
 
-    // Remove heart after animation ends
-    heart.addEventListener('animationend', () => {
-        heart.remove();
-    });
+    nameDisplay.textContent = `${yourName} ❤️ ${yourLoveName}`;
+
+    landingPage.classList.add('hidden');
+    animationPage.classList.remove('hidden');
+
+    startHeartAnimation(yourLoveName);
+});
+
+function startHeartAnimation(loveName) {
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+
+        const size = Math.random() * 20 + 40;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+
+        const colors = ['#ff4d6d', '#ff7eb3', '#ff9aa2', '#f08080', '#ffae42'];
+        heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+
+        heart.textContent = `${loveName} ❤️ I love you`;
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener('animationend', () => {
+            heart.remove();
+        });
+    }, 300);
 }
-
-setInterval(createHeart, 200); // Create hearts continuously
