@@ -2,7 +2,7 @@
 const makeItButton = document.getElementById('makeIt');
 const landingPage = document.querySelector('.landing-page');
 const animationPage = document.querySelector('.animation-page');
-const yourNameInput = document.getElementById('yourName');
+const yourNameInput = document.getElementByI('yourName');
 const yourLoveNameInput = document.getElementById('yourLoveName');
 const nameDisplay = document.getElementById('nameDisplay');
 
